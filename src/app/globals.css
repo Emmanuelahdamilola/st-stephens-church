@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Stored as "R G B" triplets (not hex) so Tailwind can apply opacity modifiers, e.g. bg-primary/50. */
+  --color-primary: 128 74 138;    /* #804A8A */
+  --color-secondary: 248 210 153; /* #F8D299 */
+  --color-accent: 245 158 81;     /* #F59E51 CTA buttons only */
+  --color-background: 250 250 251;/* #FAFAFB */
+  --color-dark: 58 3 83;          /* #3A0353 */
+  --color-light: 243 238 245;     /* #F3EEF5 */
+  --color-text: 34 2 49;          /* #220231 */
+  --color-muted: 99 85 105;       /* #635569 */
+}
+
+html { scroll-behavior: smooth; }
+body { background: rgb(var(--color-background)); color: rgb(var(--color-text)); font-family: var(--font-body), system-ui, sans-serif; }
+
+::selection { background: rgb(var(--color-primary)); color: #fff; }
+
+:focus-visible { outline: 3px solid rgb(var(--color-primary)); outline-offset: 3px; }
+[data-dark] :focus-visible, [data-dark]:focus-visible { outline-color: rgb(var(--color-secondary)); }
+
+.header-solid {
+  background: rgb(var(--color-background) / 0.96);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgb(var(--color-dark) / 0.12);
+}
+
+/* Faint cross pattern for dark photo/sections. Hard-coded colors: CSS variables don't resolve inside a data-URI. */
+.pattern-cross {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 22v12M22 28h12' stroke='%23F8D299' stroke-opacity='0.10' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Dot grid used behind offset photos for depth (light and dark variants). */
+.pattern-dots {
+  background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* Diamond / rotated-square control button: the icon child is counter-rotated back to upright. */
+.btn-diamond { transform: rotate(45deg); }
+.btn-diamond > * { transform: rotate(-45deg); }
+
+/* Map-pin / teardrop badge: a circle with one square corner, rotated 45deg. */
+.badge-drop { border-radius: 9999px 9999px 0 9999px; transform: rotate(45deg); }
+.badge-drop > * { transform: rotate(-45deg); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
