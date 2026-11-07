@@ -4,7 +4,7 @@ import type { Sermon } from "@/types/content";
 import { SermonCard } from "@/components/cards/SermonCard";
 import { EmptyState } from "@/components/ui/EmptyState";
 
-const selectClass = "w-full border border-primary/40 bg-white px-3 py-3";
+const selectClass = "w-full border rounded-md border-primary/40 bg-white px-3 py-3";
 
 export function SermonLibrary({ sermons }: { sermons: Sermon[] }) {
   const [query, setQuery] = useState("");
