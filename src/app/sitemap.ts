@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { ministries } from "@/data/ministries";
-import { getBlogPosts, getEvents } from "@/lib/content";
+import { getBlogPosts, getEvents, getSermons } from "@/lib/content";
 import { siteUrl } from "@/lib/utils";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     ...pages,
     ...ministries.map((m) => `/ministries/${m.slug}`),
+    ...(await getSermons()).map((s) => `/sermons/${s.id}`),
     ...(await getEvents()).map((e) => `/events/${e.id}`),
     ...(await getBlogPosts()).map((p) => `/blog/${p.slug}`),
   ];
