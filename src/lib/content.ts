@@ -8,6 +8,7 @@ import type { BlogPost, ChurchEvent, GalleryImage, Sermon, Testimonial } from "@
 
 // TODO: Replace mock sermons with API
 export async function getSermons(): Promise<Sermon[]> { return sermons; }
+export async function getSermon(id: string): Promise<Sermon | undefined> { return sermons.find((s) => s.id === id); }
 // TODO: Connect events to database
 export async function getEvents(): Promise<ChurchEvent[]> { return events; }
 export async function getEvent(id: string): Promise<ChurchEvent | undefined> { return events.find((e) => e.id === id); }

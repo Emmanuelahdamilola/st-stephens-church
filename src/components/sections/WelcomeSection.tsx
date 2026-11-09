@@ -19,7 +19,7 @@ export function WelcomeSection() {
           <span aria-hidden className="pattern-dots absolute -left-5 -top-5 h-28 w-28 text-primary/25" />
           <div className="relative">
             <ImageReveal>
-              <Media src={images.congregation.src} alt={images.congregation.alt} className="aspect-[4/3] rounded-lg" sizes="(min-width: 1024px) 40vw, 90vw" />
+              <Media src={images.congregation.src} alt={images.congregation.alt} className="aspect-[4/3] rounded-lg" sizes="(min-width: 1024px) 40vw, 90vw" priority />
             </ImageReveal>
             <ImageReveal className="absolute -bottom-8 -right-8 w-2/5 rounded-lg border-4 border-background shadow-2xl" delay={0.3}>
               <Media src={images.churchBuilding.src} alt={images.churchBuilding.alt} className="aspect-square rounded-lg" sizes="(min-width: 1024px) 16vw, 40vw" />

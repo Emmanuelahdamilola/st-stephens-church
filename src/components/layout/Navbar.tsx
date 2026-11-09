@@ -71,7 +71,7 @@ export function Navbar() {
     <>
       <header {...(!scrolled ? { "data-dark": true } : {})} className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${solid ? "header-solid text-ink" : "bg-transparent text-white"}`}>
         {/* Slim info bar (desktop). Collapses once the page scrolls. */}
-        <div data-dark className={`hidden overflow-hidden border-b border-white/15 bg-dark text-xs transition-[max-height] duration-300 lg:block ${scrolled ? "max-h-0" : "max-h-10"}`}>
+        <div data-dark className={`hidden overflow-hidden border-b border-white/15 bg-dark text-xs transition-[max-height] duration-300 xl:block ${scrolled ? "max-h-0" : "max-h-10"}`}>
           <div className="mx-auto flex h-10 max-w-7xl items-center justify-between px-8 text-white/85">
             <p className="flex items-center gap-7">
               <span className="flex items-center gap-2"><Icon name="clock" className="h-4 w-4 text-secondary" />{church.service.name}: {church.service.time}</span>
@@ -93,7 +93,7 @@ export function Navbar() {
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">
             {desktopLinks.map((item) => (
               <div key={item.label} className="group relative">
                 <Link href={item.href} className={`relative flex items-center gap-1 py-2 text-xs font-bold uppercase tracking-widest after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform group-hover:after:scale-x-100 group-focus-within:after:scale-x-100`}>
@@ -111,12 +111,12 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             <Button href="/give" variant={solid ? "secondary" : "outlineLight"} arrow={false} className="!py-2.5">Give</Button>
             <Button href="/plan-a-visit" variant="primary" className="!py-2.5">Plan a Visit</Button>
           </div>
 
-          <button ref={menuButton} type="button" className="p-2 lg:hidden" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((v) => !v)}>
+          <button ref={menuButton} type="button" className="p-2 xl:hidden" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((v) => !v)}>
             <Icon name={open ? "close" : "menu"} className="h-7 w-7" />
           </button>
         </div>
@@ -126,7 +126,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div id="mobile-menu" ref={menu} role="dialog" aria-modal="true" aria-label="Site menu" data-dark onKeyDown={trapFocus}
-            className="pattern-cross fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-dark px-5 pb-10 pt-4 text-white lg:hidden"
+            className="pattern-cross fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-dark px-5 pb-10 pt-4 text-white xl:hidden"
             initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }}>
             <ul className="divide-y divide-white/10">
               {mobileLinks.map(([label, href], i) => (
