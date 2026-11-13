@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import { church } from "@/data/church";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Preloader } from "@/components/layout/Preloader";
+import { PRELOADER_KEY, PRELOADER_ONCE_PER_SESSION } from "@/lib/preloader";
 import "./globals.css";
 
 const heading = Poppins({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-heading", display: "swap" });
@@ -25,18 +27,31 @@ const structuredData = {
   name: church.name,
   alternateName: church.tagline,
   email: church.email,
+  telephone: church.phoneIntl,
   address: { "@type": "PostalAddress", streetAddress: church.address.street, addressLocality: "Anaye, Ikere-Ekiti", addressRegion: church.address.region, addressCountry: "NG" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+    // suppressHydrationWarning: the inline script below may add a class to <html> before React loads.
+    <html lang="en" className={`${heading.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Returning visitors in the same session skip the splash: hide it before the first paint so it never flashes. */}
+        {PRELOADER_ONCE_PER_SESSION && (
+          <script dangerouslySetInnerHTML={{ __html: `try{if(sessionStorage.getItem("${PRELOADER_KEY}")==="1")document.documentElement.classList.add("preloader-seen")}catch(e){}` }} />
+        )}
+        {/* No JavaScript means the splash could never lift, so hide it. */}
+        <noscript><style>{".preloader{display:none!important}"}</style></noscript>
+      </head>
       <body>
-        <a href="#main" className="sr-only z-[60] bg-white px-4 py-2 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
-        <Navbar />
-        <main id="main">{children}</main>
-        <Footer />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <Preloader />
+        <div id="site">
+          <a href="#main" className="sr-only z-[60] bg-white px-4 py-2 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
+          <Navbar />
+          <main id="main">{children}</main>
+          <Footer />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        </div>
       </body>
     </html>
   );

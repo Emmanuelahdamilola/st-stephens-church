@@ -22,6 +22,9 @@ body { background: rgb(var(--color-background)); color: rgb(var(--color-text)); 
 :focus-visible { outline: 3px solid rgb(var(--color-primary)); outline-offset: 3px; }
 [data-dark] :focus-visible, [data-dark]:focus-visible { outline-color: rgb(var(--color-secondary)); }
 
+/* Set by a tiny inline script when the splash has already been seen this session. */
+.preloader-seen .preloader { display: none; }
+
 .header-solid {
   background: rgb(var(--color-background) / 0.96);
   backdrop-filter: blur(10px);
