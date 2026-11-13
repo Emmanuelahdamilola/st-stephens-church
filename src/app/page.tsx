@@ -12,6 +12,9 @@ import { TestimonialSection } from "@/components/sections/TestimonialSection";
 import { PrayerGivingSection } from "@/components/sections/PrayerGivingSection";
 import { VisitSection } from "@/components/sections/VisitSection";
 
+// Which events count as upcoming depends on today's date, so refresh this page hourly.
+export const revalidate = 3600;
+
 // Flow: Hero with overlapping event/service cards, Welcome, About + values, Mission quote band,
 // Sermons, Ministries, Communion, Leadership, Testimonials (hidden when empty), Prayer + Giving, Visit/Contact.
 export default function HomePage() {
