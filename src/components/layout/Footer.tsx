@@ -58,6 +58,7 @@ export function Footer() {
           </div>
           <div>
             <h2 className={heading}>Connect</h2>
+            <p className="mb-3 flex gap-3"><Icon name="phone" className="mt-0.5 h-5 w-5 shrink-0 text-secondary" /><span>Church hotline:<br /><a className="underline underline-offset-4 hover:text-secondary" href={church.phoneHref}>{church.phone}</a></span></p>
             <p className="flex gap-3"><Icon name="mail" className="mt-0.5 h-5 w-5 shrink-0 text-secondary" /><a className="break-all underline underline-offset-4 hover:text-secondary" href={`mailto:${church.email}`}>{church.email}</a></p>
           </div>
         </div>

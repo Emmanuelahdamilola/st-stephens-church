@@ -78,6 +78,7 @@ export function Navbar() {
               <span className="flex items-center gap-2"><Icon name="pin" className="h-4 w-4 text-secondary" />{church.address.street}, {church.address.town}</span>
             </p>
             <p className="flex items-center gap-5">
+              <a href={church.phoneHref} className="flex items-center gap-2 hover:text-secondary"><Icon name="phone" className="h-4 w-4 text-secondary" />{church.phone}</a>
               <a href={`mailto:${church.email}`} className="flex items-center gap-2 hover:text-secondary"><Icon name="mail" className="h-4 w-4 text-secondary" />{church.email}</a>
               <a href={church.facebookUrl} target="_blank" rel="noopener noreferrer" aria-label={`${church.name} on Facebook`} className="hover:text-secondary"><Icon name="facebook" className="h-4 w-4" /></a>
             </p>
@@ -140,6 +141,7 @@ export function Navbar() {
             <div className="mt-8 space-y-2 text-sm text-white/80">
               <p className="flex items-center gap-2"><Icon name="clock" className="h-4 w-4 text-secondary" />{church.service.name} — {church.service.time}</p>
               <p className="flex items-center gap-2"><Icon name="pin" className="h-4 w-4 text-secondary" />{church.address.street}, {church.address.town}</p>
+              <p><a href={church.phoneHref} className="flex items-center gap-2"><Icon name="phone" className="h-4 w-4 text-secondary" />Church hotline: {church.phone}</a></p>
             </div>
           </motion.div>
         )}

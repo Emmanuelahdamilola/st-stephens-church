@@ -4,7 +4,7 @@ import type { Sermon } from "@/types/content";
 import { SermonCard } from "@/components/cards/SermonCard";
 import { EmptyState } from "@/components/ui/EmptyState";
 
-const selectClass = "w-full border rounded-md border-primary/40 bg-white px-3 py-3";
+const selectClass = "w-full border border-primary/40 bg-white px-3 py-3";
 
 export function SermonLibrary({ sermons }: { sermons: Sermon[] }) {
   const [query, setQuery] = useState("");
@@ -19,6 +19,10 @@ export function SermonLibrary({ sermons }: { sermons: Sermon[] }) {
       .filter((s) => !q || `${s.title} ${s.speaker} ${s.description ?? ""}`.toLowerCase().includes(q))
       .sort((a, b) => b.date.localeCompare(a.date));
   }, [sermons, query, series, category]);
+
+  if (sermons.length === 0) {
+    return <EmptyState title="Sermons are coming soon." message="Check back soon to watch and listen to sermons from St. Stephen's Anglican Church." />;
+  }
 
   return (
     <div>

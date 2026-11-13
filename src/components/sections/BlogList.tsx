@@ -13,6 +13,10 @@ export function BlogList({ posts }: { posts: BlogPost[] }) {
     return posts.filter((p) => (category === "All" || p.category === category) && (!q || `${p.title} ${p.excerpt}`.toLowerCase().includes(q))).sort((a, b) => b.date.localeCompare(a.date));
   }, [posts, query, category]);
 
+  if (posts.length === 0) {
+    return <EmptyState title="News is coming soon." message="Check back soon for news and reflections from St. Stephen's Anglican Church." />;
+  }
+
   return (
     <div>
       <div className="mb-10 flex flex-wrap items-end gap-6">

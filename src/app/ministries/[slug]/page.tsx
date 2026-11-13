@@ -20,6 +20,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return ministry ? { title: ministry.name, alternates: { canonical: `/ministries/${slug}` } } : {};
 }
 
+// Related events depend on today's date, so refresh this page hourly.
+export const revalidate = 3600;
+
 const soon = "Details coming soon.";
 
 // Reusable for every ministry: sections fill in automatically when data is added to data/ministries.ts.

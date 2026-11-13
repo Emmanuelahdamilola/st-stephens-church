@@ -16,6 +16,7 @@ export function VisitSection() {
           <div className="mt-9 space-y-5">
             <IconRow icon="clock" label={church.service.name}><span className="font-heading text-2xl font-bold">{church.service.time}</span></IconRow>
             <IconRow icon="pin" label="Address">{church.address.street}, {church.address.town}, {church.address.region}</IconRow>
+            <IconRow icon="phone" label="Church hotline"><a className="underline underline-offset-4" href={church.phoneHref}>{church.phone}</a></IconRow>
             <IconRow icon="mail" label="Email"><a className="underline underline-offset-4" href={`mailto:${church.email}`}>{church.email}</a></IconRow>
             <IconRow icon="facebook" label="Facebook"><a className="underline underline-offset-4" href={church.facebookUrl} target="_blank" rel="noopener noreferrer">{church.facebookHandle}</a></IconRow>
           </div>

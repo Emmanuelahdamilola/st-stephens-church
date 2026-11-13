@@ -8,6 +8,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = { title: "Events", description: "Upcoming and past events at St. Stephen's Anglican Church.", alternates: { canonical: "/events" } };
 
+// Upcoming vs past depends on today's date, so refresh this page hourly.
+export const revalidate = 3600;
+
 export default async function EventsPage() {
   const all = await getEvents();
   const cutoff = Date.now() - 86_400_000; // an event stays "upcoming" through its day

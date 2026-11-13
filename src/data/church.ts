@@ -9,6 +9,11 @@ export const church = {
   address: { street: "Eleyo High School Road", town: "Anaye, Ikere-Ekiti", region: "Ekiti State", country: "Nigeria" },
   service: { day: "Every Sunday", name: "Sunday Worship", time: "9:00 AM" },
   email: "ststephenangchurch@gmail.com",
+  diocese: "Diocese of Ekiti South",
+  // Church hotline, as printed on the church bulletin.
+  phone: "0703 954 0707",
+  phoneHref: "tel:+2347039540707",
+  phoneIntl: "+2347039540707",
   facebookHandle: "ststephenangchurch",
   facebookUrl: "https://www.facebook.com/ststephenangchurch",
   // TODO: paste a Google Maps "embed a map" URL here to show a live map. No coordinates are invented.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { church } from "@/data/church";
 import { images } from "@/data/images";
+import { leaders } from "@/data/leaders";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -25,7 +26,8 @@ export default function AboutPage() {
           <Media src={images.churchBuilding.src} alt={images.churchBuilding.alt} className="aspect-[4/3] rounded-lg" sizes="(min-width: 1024px) 45vw, 90vw" />
           <div>
             <SectionHeading eyebrow="History" title="Our Story" className="mb-6" />
-            <p className="text-muted">The story of St. Stephen&apos;s Anglican Church will be shared here once the church provides it.</p>
+            <p className="text-lg">St. Stephen&apos;s Anglican Church belongs to the {church.diocese}, whose Bishop is {leaders[0].name}.</p>
+            <p className="mt-4 text-muted">The full story of St. Stephen&apos;s Anglican Church will be shared here once the church provides it.</p>
           </div>
         </Container>
       </section>

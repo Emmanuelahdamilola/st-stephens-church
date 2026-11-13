@@ -18,6 +18,7 @@ export function CommunionSection() {
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-secondary">Sacrament</p>
           <h2 className="mt-4 font-heading text-4xl sm:text-6xl">Holy Communion</h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-white/85">{communion.message}</p>
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-secondary/50 px-5 py-2 text-sm text-secondary"><Icon name="clock" className="h-4 w-4" />{communion.sections[0].body}</p>
           <div className="mt-10"><Button href="/holy-communion" variant="outlineLight">Learn More</Button></div>
         </Reveal>
       </Container>

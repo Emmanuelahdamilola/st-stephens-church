@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getEvent, getEvents } from "@/lib/content";
-import { formatDate } from "@/lib/utils";
+import { formatDate, weekdayName } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { Media } from "@/components/ui/Media";
@@ -28,7 +28,7 @@ export default async function EventPage({ params }: Params) {
         <Container className="grid gap-12 lg:grid-cols-2">
           <Media src={event.image} alt={event.title} className="aspect-video" sizes="(min-width: 1024px) 50vw, 100vw" />
           <div>
-            <p className="text-sm uppercase tracking-widest text-primary">{event.time} · {event.location}</p>
+            <p className="text-sm uppercase tracking-widest text-primary">{event.time ?? weekdayName(event.date)} · {event.location}</p>
             <p className="mt-5 text-lg">{event.description}</p>
             {event.registerUrl && <div className="mt-8"><Button href={event.registerUrl} variant="primary">Register</Button></div>}
           </div>

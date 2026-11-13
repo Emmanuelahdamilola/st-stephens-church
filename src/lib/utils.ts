@@ -9,3 +9,8 @@ export function dateParts(iso: string): { day: string; month: string } {
   const d = new Date(iso);
   return { day: String(d.getUTCDate()), month: d.toLocaleString("en-NG", { month: "short", timeZone: "UTC" }) };
 }
+
+// "Sunday", "Saturday"... for an ISO date. Used when an event has no start time on file.
+export function weekdayName(iso: string): string {
+  return new Intl.DateTimeFormat("en-NG", { weekday: "long", timeZone: "UTC" }).format(new Date(iso));
+}
